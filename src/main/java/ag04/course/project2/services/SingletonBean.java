@@ -10,6 +10,6 @@ public class SingletonBean {
     }
 
     public String getMyScope(){
-        return "I'm a Singeton";
+        return "I'm a Singleton Bean";
     }
 }

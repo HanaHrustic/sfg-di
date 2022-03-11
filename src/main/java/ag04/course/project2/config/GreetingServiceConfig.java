@@ -12,21 +12,20 @@ import ag04.course.project2.services.PrimaryGreetingService;
 import ag04.course.project2.services.PropertyInjectedGreetingService;
 import ag04.course.project2.services.SetterInjectedGreetingService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.*;
 
-@PropertySource("classpath:datasource.properties")
+@EnableConfigurationProperties(SfgConstructorConfig.class)
 @ImportResource("classpath:stgdi-config.xml")
 @Configuration
 public class GreetingServiceConfig {
 
      @Bean
-    FakeDataSource fakeDataSource(@Value("${guru.username}")String username,
-                                  @Value("${guru.password}")String password,
-                                  @Value("${guru.jdbcurl}")String jdbcurl){
+    FakeDataSource fakeDataSource(SfgConstructorConfig sfgConstructorConfig){
          FakeDataSource fakeDataSource = new FakeDataSource();
-         fakeDataSource.setUsername(username);
-         fakeDataSource.setPassword(password);
-         fakeDataSource.setJdbcurl(jdbcurl);
+         fakeDataSource.setUsername(sfgConstructorConfig.getUsername());
+         fakeDataSource.setPassword(sfgConstructorConfig.getPassword());
+         fakeDataSource.setJdbcurl(sfgConstructorConfig.getJdbcurl());
          return fakeDataSource;
      }
 

@@ -13,6 +13,6 @@ public class PrototypeBean {
     }
 
     public String getMyScope(){
-        return "I'm a Singeton";
+        return "I'm a Prototype Bean";
     }
 }

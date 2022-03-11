@@ -1,5 +1,7 @@
 package ag04.course.project2;
 
+import ag04.course.project2.config.SfgConfiguration;
+import ag04.course.project2.config.SfgConstructorConfig;
 import ag04.course.project2.controllers.LanguageController;
 import ag04.course.project2.controllers.*;
 import ag04.course.project2.datasource.FakeDataSource;
@@ -52,10 +54,24 @@ public class Project2Application {
 		PrototypeBean prototypeBean2 = ctx.getBean(PrototypeBean.class);
 		System.out.println(prototypeBean2.getMyScope());
 
+		System.out.println("--------------Fake Data Source-----------------");
 		FakeDataSource fakeDataSource = ctx.getBean(FakeDataSource.class);
 		System.out.println(fakeDataSource.getUsername());
 		System.out.println(fakeDataSource.getPassword());
 		System.out.println(fakeDataSource.getJdbcurl());
+
+
+		System.out.println("--------------------Config Props Bean-------------------");
+		SfgConfiguration sfgConfiguration = ctx.getBean(SfgConfiguration.class);
+		System.out.println(sfgConfiguration.getUsername());
+		System.out.println(sfgConfiguration.getPassword());
+		System.out.println(sfgConfiguration.getJdbcurl());
+
+		System.out.println("--------------Constructor Binding---------------------");
+		SfgConstructorConfig sfgConstructorConfig = ctx.getBean(SfgConstructorConfig.class);
+		System.out.println(sfgConstructorConfig.getUsername());
+		System.out.println(sfgConstructorConfig.getPassword());
+		System.out.println(sfgConstructorConfig.getJdbcurl());
 	}
 
 }
